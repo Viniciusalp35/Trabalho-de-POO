@@ -1,18 +1,25 @@
 package Carros;
 
-public abstract class Carros {
+public abstract class Carros implements IStatus {
     private String modelo;
     private String cor;
     private double preço;
     private boolean Status;
     private String Tipo;
+    private String Placa;
 
 
-    public Carros(boolean Status){
+    public Carros(boolean Status,String placa){
         this.Status = Status;
+        this.Placa = placa;
     }
 
-
+    public String getPlaca(){
+        return this.Placa;
+    }
+    public void setPlaca(String NovaPlaca){
+        this.Placa = NovaPlaca;
+    }
     public String getModelo() {
         return modelo;
     }
@@ -33,9 +40,14 @@ public abstract class Carros {
     public boolean isStatus() {
         return Status;
     }
-    public void setStatus(boolean status) {
-        this.Status = status;
+    public void setStatus(boolean Status) {
+        this.Status = Status;
     }
+
+    public boolean getStatus(){
+        return this.Status;
+    }
+
     public String getTipo() {
         return Tipo;
     }
