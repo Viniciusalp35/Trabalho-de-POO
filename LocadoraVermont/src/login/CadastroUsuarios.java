@@ -10,12 +10,16 @@ public class CadastroUsuarios {
     }
 
     public void CadastrarUsuario(Usuarios usuario) throws NomeJaUtilizado{
-        for(int i = 0; i < users.size(); i++) {
-            if(users.get(i).getNomeUsuario().equals(usuario.getNomeUsuario())) {
-                throw new NomeJaUtilizado(usuario.getNomeUsuario());
+        try {
+            for (Usuarios user : users) {
+                if (user.getNomeUsuario().equals(usuario.getNomeUsuario())) {
+                    throw new NomeJaUtilizado(usuario.getNomeUsuario());
+                }
             }
+            users.add(usuario);
+        } catch(NomeJaUtilizado e){
+            System.out.println(e.toString());
         }
-        users.add(usuario);
     }
     public int ProcurarUsuario(String nomeUsuario) {
         for(int i = 0; i < users.size(); i++) {

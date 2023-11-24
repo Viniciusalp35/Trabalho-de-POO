@@ -2,10 +2,11 @@ import login.Usuarios;
 import login.CadastroUsuarios;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         System.out.println("Hello world!");
-//        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
-//        Usuarios usuarios = new Usuarios("Joao", "123", false);
-//        cadastroUsuarios.CadastrarUsuario(usuarios);
+        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
+        Usuarios usuarios = new Usuarios("Joao", "123", false);
+        cadastroUsuarios.CadastrarUsuario(usuarios);
+        cadastroUsuarios.CadastrarUsuario(usuarios);
     }
 }
