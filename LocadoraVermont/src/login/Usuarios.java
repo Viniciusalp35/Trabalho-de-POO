@@ -1,0 +1,34 @@
+package login;
+
+public class Usuarios {
+    private String nomeUsuario;
+    private String senha;
+    private boolean prime;
+
+    public Usuarios(String nomeUsuario, String senha, boolean prime) {
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
+        this.prime = prime;
+    }
+
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    public boolean isPrime() {
+        return prime;
+    }
+    public void setPrime(boolean prime) {
+        this.prime = prime;
+    }
+
+}

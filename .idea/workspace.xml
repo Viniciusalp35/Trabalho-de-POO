@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="806f22c9-f926-4943-be1e-b1d74fcb3a41" name="Changes" comment="" />
+    <list default="true" id="806f22c9-f926-4943-be1e-b1d74fcb3a41" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,15 +28,16 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ViniciusAlcantara&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/vivil/Trabalho de poo&quot;
+    &quot;git-widget-placeholder&quot;: &quot;JoaoBueno&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Documents/Trabalho-de-POO&quot;
   }
 }</component>
   <component name="RunManager">
-    <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Java/zulu21.30.15-ca-jdk21.0.1-win_x64/zulu21.30.15-ca-jdk21.0.1-win_x64" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="src.main.main" />
+      <option name="MAIN_CLASS_NAME" value="src.Main" />
+      <module name="Trabalho-de-POO" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -55,5 +59,10 @@
       <updated>1700782019357</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Trabalho_de_POO$Main.ic" NAME="Main Coverage Results" MODIFIED="1700834925963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.*</FILTER>
+    </SUITE>
   </component>
 </project>
