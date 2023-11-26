@@ -1,7 +1,5 @@
 package gui;
 
-import login.CadastroUsuarios;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,17 +17,19 @@ public class Login extends JFrame {
         add(backgroundLabel);
 
         //getContentPane().setBackground(Color.cyan);
-
-
-        login = new JButton("Login");
         cadastro = new JButton("Cadastro");
-        login.setBounds(50, 250, 100, 30);
-        login.setBackground(new Color(66, 141, 245));
-
         cadastro.setBackground(new Color(66, 141, 245));
         cadastro.setBounds(50, 300, 100, 30);
-        this.add(login);
-        this.add(cadastro);
+        cadastro.addActionListener(e -> ExibirTelaCadastro());
+        add(cadastro);
+
+        login = new JButton("Login");
+        login.setBounds(50, 250, 100, 30);
+        login.setBackground(new Color(66, 141, 245));
+        login.addActionListener(e -> ExibirTelaLogin());
+        add(login);
+
+
 
         JPanel panel = new JPanel();
         panel.setOpaque(false);
@@ -41,11 +41,11 @@ public class Login extends JFrame {
         setVisible(true);
     }
 
-    private void exibirTelaLogin() {
-        //LoginDialog.showLoginDialog(this,cadastroUsuarios);
+    private void ExibirTelaLogin() {
+        TelaLogin telalogin = new TelaLogin();
     }
 
-    private void exibirTelaCadastro(CadastroUsuarios cadastroUsuarios) {
-        //RegisterDialog.showRegisterDialog(cadastroUsuarios);
+    private void ExibirTelaCadastro() {
+        TelaCadastro telaCadastro = new TelaCadastro();
     }
 }
