@@ -4,6 +4,8 @@ public abstract class PagamentoAbstrato {
     protected double totalAPagar;
     protected int dias;
     protected int parcelas;
+    protected double valorParcelas;
+
 
     public PagamentoAbstrato(double totalAPagar, int dias, int parcelas) {
         this.totalAPagar = totalAPagar;
@@ -11,7 +13,7 @@ public abstract class PagamentoAbstrato {
         this.parcelas = parcelas;
     }
 
-    public abstract void taxaDePagamento(int dias);
+    public abstract void calculaTaxaDePagamento(int dias);
 
     public int getDias() {
         return this.dias;
@@ -31,9 +33,5 @@ public abstract class PagamentoAbstrato {
 
     public int getParcelas() {
         return this.parcelas;
-    }
-
-    public void setParcelas(int parcelas) {
-        this.parcelas = parcelas;
     }
 }
