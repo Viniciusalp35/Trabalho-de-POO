@@ -13,7 +13,7 @@ public abstract class PagamentoAbstrato {
         this.parcelas = parcelas;
     }
 
-    public abstract void calculaTaxaDePagamento(int dias);
+    public abstract void calculaDesconto(int dias);
 
     public int getDias() {
         return this.dias;
