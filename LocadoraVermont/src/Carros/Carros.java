@@ -1,12 +1,14 @@
 package Carros;
 
-public abstract class Carros implements IStatus {
-    private String modelo;
-    private String cor;
-    private double preço;
-    private boolean Status;
-    private String Tipo;
-    private String Placa;
+import java.io.Serializable;
+
+public abstract class Carros implements IStatus, Serializable {
+    protected String modelo;
+    protected String cor;
+    protected double preço;
+    protected boolean Status;
+    protected String Tipo;
+    protected String Placa;
 
 
     public Carros(boolean Status,String placa){
