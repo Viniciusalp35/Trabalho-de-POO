@@ -1,7 +1,12 @@
 package login;
 
 import java.util.Vector;
+
+import exception.DialogoExcessao;
 import exception.NomeJaUtilizado;
+import exception.UsuarioNaoEncontrado;
+import exception.DialogoExcessao;
+import exception.SenhaErrada;
 public class CadastroUsuarios {
     private Vector<Usuarios> users;
 
@@ -18,28 +23,33 @@ public class CadastroUsuarios {
             }
             users.add(usuario);
         } catch(NomeJaUtilizado e){
-            System.out.println(e.toString());
+            new DialogoExcessao(e);
         }
     }
-    public int ProcurarUsuario(String nomeUsuario) {
-        for(int i = 0; i < users.size(); i++) {
-            if(users.get(i).getNomeUsuario().equals(nomeUsuario)) {
-                return i;
+    public Usuarios ProcurarUsuario(String nomeUsuario) throws UsuarioNaoEncontrado{
+        try {
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getNomeUsuario().equals(nomeUsuario)) {
+                    return users.get(i);
+                }
             }
-        } return -1;
+            throw new UsuarioNaoEncontrado(nomeUsuario);
+        } catch(UsuarioNaoEncontrado e){
+            new DialogoExcessao(e);
+            return null;
+        }
     }
 
-    public void RemoverUsuario(String nomeUsuario) {
-        int remover = ProcurarUsuario(nomeUsuario);
-        users.remove(remover);
-    }
-
-    public boolean VerificarUsuario(String nomeUsuario) {
-        int index = ProcurarUsuario(nomeUsuario);
-        if(index == -1) {
-            return false;
-        } else {
-            return true;
+    public void FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
+        Usuarios cadastrado = ProcurarUsuario(usuarios.getNomeUsuario());
+        if(cadastrado != null) {
+            try {
+                if (cadastrado.getSenha() != usuarios.getSenha()) {
+                    throw new SenhaErrada(usuarios.getSenha());
+                }
+            } catch (SenhaErrada e) {
+                new DialogoExcessao(e);
+            }
         }
     }
 

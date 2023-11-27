@@ -5,14 +5,19 @@ import java.awt.*;
 
 public class DialogoExcessao {
 
+    JFrame frame = new JFrame();
+    JLabel label;
+
     public DialogoExcessao(Exception exception){
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        String erro = exception.toString();
-        JLabel erroLabel = new JLabel(erro);
+        label = new JLabel(exception.toString());
+        label.setBounds(0,0,300,100);
 
-        int option = JOptionPane.showOptionDialog(null, panel, "Erro", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
-        panel.add(erroLabel);
+        frame.add(label);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 400);
+        frame.setLayout(null);
+        frame.setVisible(true);
+
     }
 }

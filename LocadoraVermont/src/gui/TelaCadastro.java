@@ -1,5 +1,7 @@
 package gui;
 
+import exception.DialogoExcessao;
+import exception.NomeJaUtilizado;
 import login.CadastroUsuarios;
 import login.Usuarios;
 
@@ -27,7 +29,12 @@ public class TelaCadastro {
             String nome = nomeUsuarioField.getText();
             String senha = new String(senhaUsuarioField.getPassword());
 
-
+            Usuarios usuarios = new Usuarios(nome, senha);
+            try {
+                cadastroUsuarios.CadastrarUsuario(usuarios);
+            } catch(Exception e){
+                new DialogoExcessao(e);
+            }
         }
 
     }

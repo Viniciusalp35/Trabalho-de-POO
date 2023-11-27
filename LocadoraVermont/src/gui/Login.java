@@ -1,5 +1,6 @@
 package gui;
 
+import exception.DialogoExcessao;
 import login.CadastroUsuarios;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class Login extends JFrame {
         JLabel backgroundLabel = new JLabel(imagem);
         backgroundLabel.setBounds(0, 0, 800, 600);
         add(backgroundLabel);
+
 
         //getContentPane().setBackground(Color.cyan);
         cadastro = new JButton("Cadastro");
