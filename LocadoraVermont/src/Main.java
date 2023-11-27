@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) throws Exception{
         System.out.println("Hello world!");
         CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
-
         Login login = new Login();
     }
 }

@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 public class TelaCadastro {
 
-    public TelaCadastro(){
+    public TelaCadastro(CadastroUsuarios cadastroUsuarios){
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 

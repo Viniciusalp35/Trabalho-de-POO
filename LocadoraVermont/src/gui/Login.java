@@ -1,5 +1,7 @@
 package gui;
 
+import login.CadastroUsuarios;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,8 @@ public class Login extends JFrame {
     public Login() throws Exception{
         super("Locadora Vermont");
 
+        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
+
         ImageIcon imagem = new ImageIcon("src/login/VermontMenor.jpg");
         JLabel backgroundLabel = new JLabel(imagem);
         backgroundLabel.setBounds(0, 0, 800, 600);
@@ -19,14 +23,17 @@ public class Login extends JFrame {
         //getContentPane().setBackground(Color.cyan);
         cadastro = new JButton("Cadastro");
         cadastro.setBackground(new Color(66, 141, 245));
-        cadastro.setBounds(50, 300, 100, 30);
-        cadastro.addActionListener(e -> ExibirTelaCadastro());
+        cadastro.setBounds(0, 300, 100, 30);
+        cadastro.addActionListener(e -> ExibirTelaCadastro(cadastroUsuarios));
+        cadastro.setFocusable(false);
         add(cadastro);
 
         login = new JButton("Login");
-        login.setBounds(50, 250, 100, 30);
+        login.setBounds(0, 250, 100, 30);
         login.setBackground(new Color(66, 141, 245));
-        login.addActionListener(e -> ExibirTelaLogin());
+        login.addActionListener(e -> ExibirTelaLogin(cadastroUsuarios));
+        login.setFocusable(false);
+
         add(login);
 
 
@@ -41,11 +48,11 @@ public class Login extends JFrame {
         setVisible(true);
     }
 
-    private void ExibirTelaLogin() {
-        TelaLogin telalogin = new TelaLogin();
+    private void ExibirTelaLogin(CadastroUsuarios cadastroUsuarios) {
+        TelaLogin telalogin = new TelaLogin(cadastroUsuarios);
     }
 
-    private void ExibirTelaCadastro() {
-        TelaCadastro telaCadastro = new TelaCadastro();
+    private void ExibirTelaCadastro(CadastroUsuarios cadastroUsuarios) {
+        TelaCadastro telaCadastro = new TelaCadastro(cadastroUsuarios);
     }
 }

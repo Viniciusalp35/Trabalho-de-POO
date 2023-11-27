@@ -2,11 +2,16 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+
+import exception.NomeJaUtilizado;
+import exception.DialogoExcessao;
 import login.CadastroUsuarios;
 import login.Usuarios;
+
+
 public class TelaLogin {
 
-    public TelaLogin(){
+    public TelaLogin(CadastroUsuarios cadastroUsuarios){
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
@@ -27,7 +32,12 @@ public class TelaLogin {
             String nome = nomeUsuarioField.getText();
             String senha = new String(senhaUsuarioField.getPassword());
 
-
+            Usuarios usuarios = new Usuarios(nome, senha);
+            try {
+                cadastroUsuarios.CadastrarUsuario(usuarios);
+            } catch(NomeJaUtilizado e){
+                new DialogoExcessao(e);
+            }
         }
 
 
