@@ -45,9 +45,15 @@ public class ArmazenaCar implements Serializable {
         salvador.salvar(listarCarrosEco(),"Listadoscarroseconomicos");
     }
 
-    public ArmazenaCar checaEstoque(String localdesalvamento){
+    public void checaEstoque(String localdesalvamento){
         ResgatandoLista resgatador = new ResgatandoLista(localdesalvamento);
-        return resgatador.carregaListagem();
+        if(resgatador.carregaListagem() != null){
+            Carros[] array;
+            array = resgatador.carregaListagem();
+            for(Carros temp : array){
+                adicionarCarros(temp);
+            }
+        }
     }
 
 
@@ -70,6 +76,8 @@ public class ArmazenaCar implements Serializable {
             arrayLuxo = new CarrosLux[CarrosdeLuxo.size()];
             arrayLuxo = CarrosdeLuxo.toArray(arrayLuxo);
         }
+        System.out.println(Arrays.toString(arrayLuxo));
+
         return arrayLuxo;
    }
 

@@ -8,13 +8,10 @@ public class ResgatandoLista {
         this.LocaldeSalvamento = LocaldeSalvamento;
     }
 
-    public ArmazenaCar carregaListagem(){
+    public Carros[] carregaListagem(){
         Serializator carregador = new Serializator();
         Carros[] carrosarray = carregador.ler(this.LocaldeSalvamento);
-        ArmazenaCar Carros = new ArmazenaCar();
-        for(Carros temp : carrosarray){
-            Carros.adicionarCarros(temp);
-        }
-        return Carros;
+
+        return carrosarray;
     }
 }
