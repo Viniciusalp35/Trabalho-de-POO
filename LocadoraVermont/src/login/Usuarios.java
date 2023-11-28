@@ -3,7 +3,7 @@ package login;
 public class Usuarios {
     private String nomeUsuario;
     private String senha;
-    //private boolean prime;
+    private boolean prime;
 
     public Usuarios(String nomeUsuario, String senha) {
         this.nomeUsuario = nomeUsuario;
@@ -23,11 +23,12 @@ public class Usuarios {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    //public boolean isPrime() {
-        //return prime;
-    //}
-    //public void setPrime(boolean prime) {
-        //this.prime = prime;
-    //}
+
+    public boolean isPrime() {
+        return prime;
+    }
+    public void setPrime(boolean prime) {
+        this.prime = prime;
+    }
 
 }

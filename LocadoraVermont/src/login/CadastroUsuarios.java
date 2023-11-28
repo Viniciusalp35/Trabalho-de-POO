@@ -40,17 +40,21 @@ public class CadastroUsuarios {
         }
     }
 
-    public void FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
+    public boolean FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
         Usuarios cadastrado = ProcurarUsuario(usuarios.getNomeUsuario());
         if(cadastrado != null) {
             try {
                 if (cadastrado.getSenha() != usuarios.getSenha()) {
                     throw new SenhaErrada(usuarios.getSenha());
+                } else{
+                    return true;
                 }
             } catch (SenhaErrada e) {
                 new DialogoExcessao(e);
+                return false;
             }
         }
+        return false;
     }
 
 }
