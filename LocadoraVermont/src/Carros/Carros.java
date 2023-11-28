@@ -65,4 +65,4 @@ public abstract class Carros implements IStatus, Serializable {
     public void setTipo(String tipo) {
         Tipo = tipo;
     }
-}git s
+}
