@@ -3,6 +3,7 @@ package Reserva;
 import Carros.Carros;
 
 public class Reserva {
+
     //atributos
     private Carros carro;
     private String dataInicio;
@@ -10,6 +11,8 @@ public class Reserva {
     private double valorTotal;
 
     //métodos
+
+
 
     public Carros getCarro() {
         return carro;
@@ -36,7 +39,6 @@ public class Reserva {
     }
 
     public void checarDisponibilidade(String dataInicio, String dataFim){
-
     }
     public double getValorTotal() {
         return valorTotal;
