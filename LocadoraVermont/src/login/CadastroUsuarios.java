@@ -44,14 +44,13 @@ public class CadastroUsuarios {
         Usuarios cadastrado = ProcurarUsuario(usuarios.getNomeUsuario());
         if(cadastrado != null) {
             try {
-                if (cadastrado.getSenha() != usuarios.getSenha()) {
+                if (!cadastrado.getSenha().equals(usuarios.getSenha())) {
                     throw new SenhaErrada(usuarios.getSenha());
                 } else{
                     return true;
                 }
             } catch (SenhaErrada e) {
                 new DialogoExcessao(e);
-                return false;
             }
         }
         return false;
