@@ -4,6 +4,7 @@ import exception.DialogoExcessao;
 import exception.NomeJaUtilizado;
 import login.CadastroUsuarios;
 import login.Usuarios;
+import serializador.SalvarUsuarios;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,6 +33,7 @@ public class TelaCadastro {
             Usuarios usuarios = new Usuarios(nome, senha);
             try {
                 cadastroUsuarios.CadastrarUsuario(usuarios);
+                SalvarUsuarios.serializar(cadastroUsuarios);
             } catch(Exception e){
                 new DialogoExcessao(e);
             }

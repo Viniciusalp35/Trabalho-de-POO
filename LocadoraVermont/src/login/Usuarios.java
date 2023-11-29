@@ -1,6 +1,8 @@
 package login;
 
-public class Usuarios {
+import java.io.Serializable;
+
+public class Usuarios implements Serializable {
     private String nomeUsuario;
     private String senha;
     private boolean prime;

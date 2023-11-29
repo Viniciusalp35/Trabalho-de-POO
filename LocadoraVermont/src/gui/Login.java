@@ -11,10 +11,8 @@ public class Login extends JFrame {
     private JButton login;
     private JButton cadastro;
 
-    public Login() throws Exception{
+    public Login(CadastroUsuarios cadastroUsuarios) throws Exception{
         super("Locadora Vermont");
-
-        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
 
         ImageIcon imagem = new ImageIcon("src/login/VermontMenor.jpg");
         JLabel backgroundLabel = new JLabel(imagem);

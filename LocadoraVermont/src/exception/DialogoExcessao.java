@@ -19,5 +19,7 @@ public class DialogoExcessao {
         frame.setLayout(null);
         frame.setVisible(true);
 
+        exception.printStackTrace();
+
     }
 }

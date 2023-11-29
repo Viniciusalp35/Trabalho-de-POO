@@ -1,5 +1,6 @@
 package login;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import exception.DialogoExcessao;
@@ -7,7 +8,8 @@ import exception.NomeJaUtilizado;
 import exception.UsuarioNaoEncontrado;
 import exception.DialogoExcessao;
 import exception.SenhaErrada;
-public class CadastroUsuarios {
+
+public class CadastroUsuarios implements Serializable {
     private Vector<Usuarios> users;
 
     public CadastroUsuarios() {
