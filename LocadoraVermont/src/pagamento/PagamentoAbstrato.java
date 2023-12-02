@@ -11,7 +11,7 @@ public abstract class PagamentoAbstrato {
         this.parcelas = parcelas;
     }
 
-    public abstract double calcularValorTotal(int dias);
+    public abstract double calcularValorTotal();
 
     public abstract double calcularDesconto();
 

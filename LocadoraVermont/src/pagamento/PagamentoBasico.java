@@ -8,8 +8,8 @@ public class PagamentoBasico extends PagamentoAbstrato {
     }
 
     @Override
-    public double calcularValorTotal(int dias) {
-        totalAPagar = (dias * taxaDiaria);
+    public double calcularValorTotal() {
+        totalAPagar = (super.dias * taxaDiaria);
         totalAPagar -= calcularDesconto();
 
         return totalAPagar;
