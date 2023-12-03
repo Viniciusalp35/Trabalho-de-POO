@@ -6,6 +6,7 @@ import login.Usuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +17,6 @@ public class Reserva {
     private Usuarios usuario;
     private Date dataInicio;
     private Date dataFim;
-    private double valorTotal;
 
     //métodos
 
@@ -29,7 +29,7 @@ public class Reserva {
             Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            this.dataFim = new SimpleDateFormat("dd/MM/yyyy").parse(dataInicio);
+            this.dataFim = new SimpleDateFormat("dd/MM/yyyy").parse(dataFim);
         } catch (ParseException ex) {
             Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,13 +59,31 @@ public class Reserva {
         this.dataFim = dataFim;
     }
 
-    public void checarDisponibilidade(String dataInicio, String dataFim){
-    }
-    public double getValorTotal() {
-        return valorTotal;
+    public void realizarReserva() {
+        if (verificarDisponibilidade()) {
+            carro.setStatus(false); // Define o status do carro como indisponível
+            // Adicione a lógica para adicionar a reserva à sua lista de reservas, salvar no banco de dados, etc.
+            System.out.println("Reserva realizada com sucesso!");
+        } else {
+            // Lógica para lidar com a indisponibilidade do carro
+            System.out.println("Carro não disponível para reserva no período especificado.");
+        }
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    // Método para verificar a disponibilidade do carro
+    public boolean verificarDisponibilidade() {
+        List<Reserva> reservasDoCarro = ArmazenaReserva.obterReservasDoCarro(carro);
+
+        for (Reserva reservaExistente : reservasDoCarro) {
+            if (sobreposicaoDatas(dataInicio, dataFim, reservaExistente.getDataInicio(), reservaExistente.getDataFim())) {
+                //System.out.println("Carro não disponível para reserva no período especificado.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean sobreposicaoDatas(Date inicio1, Date fim1, Date inicio2, Date fim2) {
+        return inicio1.before(fim2) && fim1.after(inicio2);
     }
 }
