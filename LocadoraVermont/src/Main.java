@@ -1,5 +1,6 @@
 import Carros.*;
 
+import gui.TelaPagamento;
 import login.Usuarios;
 import login.CadastroUsuarios;
 import gui.Login;
@@ -24,8 +25,9 @@ public class Main {
 
         PagamentoAbstrato pagamento = new PagamentoPrime(60, 12);
         double valor = pagamento.calcularValorTotal();
-        double valorParcelado = ((PagamentoPrime) pagamento).calcularValorParcelado(pagamento.getTotalAPagar(), pagamento.getParcelas());
+        double valorParcelado = ((PagamentoPrime) pagamento).calcularValorParcelado();
         System.out.println(valor  + " e " + valorParcelado);
 
+        TelaPagamento telaPagamento = new TelaPagamento();
     }
 }
