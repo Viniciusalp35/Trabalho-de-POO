@@ -25,6 +25,8 @@ public class TelaLogin {
         JLabel senhaUsuario = new JLabel("Senha:");
         JPasswordField senhaUsuarioField = new JPasswordField();
 
+
+
         panel.add(nomeUsuario);
         panel.add(nomeUsuarioField);
         panel.add(senhaUsuario);
@@ -37,7 +39,7 @@ public class TelaLogin {
             String nome = nomeUsuarioField.getText();
             String senha = new String(senhaUsuarioField.getPassword());
 
-            Usuarios usuarios = new Usuarios(nome, senha);
+            Usuarios usuarios = new Usuarios(nome, senha, true);
 
             // 1 = usuario básico
             // 2 = usuario prime
