@@ -35,6 +35,20 @@ public class Reserva {
         }
     }
 
+    public Reserva(Carros carro, String dataInicio, String dataFim) {
+        this.carro = carro;
+        try {
+            this.dataInicio = new SimpleDateFormat("dd/MM/yyyy").parse(dataInicio);
+        } catch (ParseException ex) {
+            Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            this.dataFim = new SimpleDateFormat("dd/MM/yyyy").parse(dataFim);
+        } catch (ParseException ex) {
+            Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public Carros getCarro() {
         return carro;
     }

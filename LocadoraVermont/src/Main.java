@@ -3,6 +3,7 @@ import Carros.*;
 import gui.TelaPagamento;
 import gui.TelaEntrada;
 
+import gui.TelaReserva;
 import login.Usuarios;
 import login.CadastroUsuarios;
 import gui.Login;
@@ -32,6 +33,7 @@ public class Main {
         //System.out.println(valor  + " e " + valorParcelado);
 
         TelaPagamento telaPagamento = new TelaPagamento();
+        TelaReserva telaReserva = new TelaReserva();
     }
 
 }
