@@ -11,12 +11,7 @@ import java.util.Date;
 import Carros.Carros;
 import login.Usuarios;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class TelaReserva extends JFrame {
 
@@ -26,10 +21,10 @@ public class TelaReserva extends JFrame {
     private String dataInicio;
     private String dataFim;
 
-    public TelaReserva() {
+    public TelaReserva(Carros carros) {
         setTitle("Reserva GUI");
         setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        selectedCarro = carros;
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5, 2, 10, 10));

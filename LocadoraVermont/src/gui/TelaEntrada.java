@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class TelaEntrada extends JFrame {
 
     public ArmazenaCar armazenaCar;
+    private String placaSelecionada;
     private JComboBox<String> tipoCarroComboBox;
     private JPanel carrosPanel;
 
@@ -76,10 +77,10 @@ public class TelaEntrada extends JFrame {
         exibirCarros();
     }
 
-    public void mostrarMensagem(String infoCarro) {
-        JOptionPane.showMessageDialog(this, "Você escolheu: " + infoCarro,
-                "Carro Escolhido", JOptionPane.INFORMATION_MESSAGE);
+    public void mostrarMensagem(Carros carros) {
+        TelaReserva telaReserva = new TelaReserva(carros);
     }
+
     public static void carregarCarros (ArmazenaCar armazenaCar){
         CarrosEco renaultKwid = new CarrosEco("Renault Kwid", "Branco", 30000, true, "Econômico", 1000, "XYZ123");
         CarrosEco fiatMobi = new CarrosEco("Fiat Mobi", "Prata", 28000, true, "Econômico", 950, "ABC456");
@@ -135,7 +136,9 @@ public class TelaEntrada extends JFrame {
                 carroButton.setBorder(BorderFactory.createCompoundBorder(
                         BorderFactory.createLineBorder(getCorFundoCarro(carro), 2), // Borda
                         BorderFactory.createEmptyBorder(5, 10, 5, 10))); // Preenchimento interno
-                carroButton.addActionListener(e -> mostrarMensagem(infoCarro));
+                carroSelecionado(carro.getPlaca());
+                Carros carros2 = armazenaCar.checarCarros(getPlacaSelecionada());
+                carroButton.addActionListener(e -> mostrarMensagem(carros2));
                 carrosPanel.add(carroButton);
 
                 // Adiciona espaço vertical entre os botões
@@ -160,5 +163,11 @@ public class TelaEntrada extends JFrame {
         carrosPanel.revalidate();
         carrosPanel.repaint();
     }
-}
+    private void carroSelecionado(String placa) {
+        this.placaSelecionada = placa;
+    }
 
+    public String getPlacaSelecionada() {
+        return placaSelecionada;
+    }
+}

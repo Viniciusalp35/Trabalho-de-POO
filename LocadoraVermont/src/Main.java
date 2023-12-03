@@ -35,7 +35,6 @@ public class Main {
         System.out.println(valor  + " e " + valorParcelado);
 
         TelaPagamento telaPagamento = new TelaPagamento();
-        TelaReserva telaReserva = new TelaReserva();
     }
 
 }
