@@ -57,7 +57,7 @@ public class TelaReserva extends JFrame {
         reservarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                realizarReserva(verificador);
+                realizarReserva(verificador, carros.getPreço());
             }
         });
 
@@ -65,7 +65,7 @@ public class TelaReserva extends JFrame {
         setVisible(true);
     }
 
-    private void realizarReserva(int verificador) {
+    private void realizarReserva(int verificador, double preco) {
         // Obter os dados inseridos pelo usuário
         dataInicio = dataInicioTextField.getText();  // Corrigindo o nome do campo
         dataFim = dataFimTextField.getText();
@@ -88,7 +88,7 @@ public class TelaReserva extends JFrame {
         // Exibir mensagem com base na disponibilidade
         if (disponivel) {
             ArmazenaReserva.adicionarReserva(novaReserva); // Adicione a reserva à lista de reservas
-            TelaPagamento telaPagamento = new TelaPagamento(verificador, parcelasN, dias);
+            TelaPagamento telaPagamento = new TelaPagamento(verificador, parcelasN, dias, preco);
         } else {
             JOptionPane.showMessageDialog(this, "Carro não disponível para reserva no período especificado.", "Indisponível", JOptionPane.WARNING_MESSAGE);
         }

@@ -17,7 +17,7 @@ public class TelaPagamento {
     private Usuarios usuario;
 
 
-    public TelaPagamento(int verificador, int parcelas, int dias) {
+    public TelaPagamento(int verificador, int parcelas, int dias, double preco) {
         frame = new JFrame("Pagamento - Locadora de Carros");
 
         frame.setSize(400, 200);
@@ -26,9 +26,9 @@ public class TelaPagamento {
         System.out.println(verificador);
 
         if (verificador == 1) {
-            pagamento = new PagamentoBasico(dias,parcelas);
+            pagamento = new PagamentoBasico(dias,parcelas, preco);
         } else if (verificador == 2) {
-            pagamento = new PagamentoPrime(dias,parcelas);
+            pagamento = new PagamentoPrime(dias,parcelas, preco);
         }
 
 

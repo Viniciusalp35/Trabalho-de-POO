@@ -82,12 +82,12 @@ public class TelaEntrada extends JFrame {
     }
 
     public static void carregarCarros (ArmazenaCar armazenaCar){
-        CarrosEco renaultKwid = new CarrosEco("Renault Kwid", "Branco", 30000, true, "Econômico", 1000, "XYZ123");
-        CarrosEco fiatMobi = new CarrosEco("Fiat Mobi", "Prata", 28000, true, "Econômico", 950, "ABC456");
-        CarrosEco citroenC3 = new CarrosEco("Citroën C3", "Azul", 32000, true, "Econômico", 1100, "DEF789");
-        CarrosEco peugeot208 = new CarrosEco("Peugeot 208", "Preto", 31000, true, "Econômico", 1050, "GHI012");
-        CarrosEco fiatArgo = new CarrosEco("Fiat Argo", "Vermelho", 29000, true, "Econômico", 980, "JKL345");
-        CarrosEco hyundaiHB20 = new CarrosEco("Hyundai HB20", "Verde", 33000, true, "Econômico", 1150, "MNO678");
+        CarrosEco renaultKwid = new CarrosEco("Renault Kwid", "Branco", 300, true, "Econômico", 1000, "XYZ123");
+        CarrosEco fiatMobi = new CarrosEco("Fiat Mobi", "Prata", 280, true, "Econômico", 950, "ABC456");
+        CarrosEco citroenC3 = new CarrosEco("Citroën C3", "Azul", 320, true, "Econômico", 1100, "DEF789");
+        CarrosEco peugeot208 = new CarrosEco("Peugeot 208", "Preto", 310, true, "Econômico", 1050, "GHI012");
+        CarrosEco fiatArgo = new CarrosEco("Fiat Argo", "Vermelho", 290, true, "Econômico", 980, "JKL345");
+        CarrosEco hyundaiHB20 = new CarrosEco("Hyundai HB20", "Verde", 330, true, "Econômico", 1150, "MNO678");
 
         armazenaCar.adicionarCarros(renaultKwid);
         armazenaCar.adicionarCarros(fiatMobi);
@@ -96,13 +96,13 @@ public class TelaEntrada extends JFrame {
         armazenaCar.adicionarCarros(fiatArgo);
         armazenaCar.adicionarCarros(hyundaiHB20);
 
-        CarrosLux mercedes = new CarrosLux("Mercedes", "Prata", 100000, true, "Luxo", 2000, "ABC123");
-        CarrosLux corvete = new CarrosLux("Corvete", "Vermelho", 80000, true, "Luxo", 1500, "DEF456");
-        CarrosLux audiA8 = new CarrosLux("Audi A8", "Preto", 120000, true, "Luxo", 2500, "GHI789");
-        CarrosLux maybach62 = new CarrosLux("Maybach 62", "Branco", 150000, true, "Luxo", 3000, "JKL012");
-        CarrosLux lexusLFA = new CarrosLux("Lexus LFA", "Azul", 200000, true, "Luxo", 4000, "MNO345");
-        CarrosLux mclarenF1 = new CarrosLux("McLaren F1", "Amarelo", 250000, true, "Luxo", 5000, "PQR678");
-        CarrosLux lexusLS600h = new CarrosLux("Lexus LS600h", "Verde", 180000, true, "Luxo", 3000, "STU901");
+        CarrosLux mercedes = new CarrosLux("Mercedes", "Prata", 1000, true, "Luxo", 2000, "ABC123");
+        CarrosLux corvete = new CarrosLux("Corvete", "Vermelho", 800, true, "Luxo", 1500, "DEF456");
+        CarrosLux audiA8 = new CarrosLux("Audi A8", "Preto", 1200, true, "Luxo", 2500, "GHI789");
+        CarrosLux maybach62 = new CarrosLux("Maybach 62", "Branco", 1500, true, "Luxo", 3000, "JKL012");
+        CarrosLux lexusLFA = new CarrosLux("Lexus LFA", "Azul", 2000, true, "Luxo", 4000, "MNO345");
+        CarrosLux mclarenF1 = new CarrosLux("McLaren F1", "Amarelo", 2500, true, "Luxo", 5000, "PQR678");
+        CarrosLux lexusLS600h = new CarrosLux("Lexus LS600h", "Verde", 1800, true, "Luxo", 3000, "STU901");
 
         armazenaCar.adicionarCarros(mercedes);
         armazenaCar.adicionarCarros(corvete);
@@ -128,7 +128,8 @@ public class TelaEntrada extends JFrame {
 
             for (Carros carro : carros) {
                 String infoCarro = carro.getModelo() + " - " + carro.getPlaca() +
-                        " | Cor: " + getCorCarro(carro);
+                        " | Cor: " + getCorCarro(carro) +
+                        " | Preço: " + carro.getPreço();
 
                 JButton carroButton = new JButton("<html><center><font size='2' color='#FFFFFF'>" + infoCarro + "</font></center></html>");
                 carroButton.setBackground(getCorFundoCarro(carro)); // Cor de fundo
