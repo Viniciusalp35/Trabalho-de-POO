@@ -1,6 +1,6 @@
 package gui;
 import Carros.*;
-
+import serializador.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +15,9 @@ public class TelaEntrada extends JFrame {
 
     public TelaEntrada() {
         armazenaCar = new ArmazenaCar();
+        armazenaCar.checaEstoque("Listadoscarrosdeluxo");
+        armazenaCar.checaEstoque("Listadoscarroseconomicos");
+
 
         setTitle("Escolher Carro");
         setSize(1200, 800);
@@ -103,22 +106,6 @@ public class TelaEntrada extends JFrame {
     }
 
     public static void carregarCarros(ArmazenaCar armazenaCar) {
-        // Carros fictícios para teste
-        CarrosLux mercedes = new CarrosLux("Mercedes", "Prata", 100000, true, "Luxo", 2000, "ABC123");
-        CarrosLux corvete = new CarrosLux("Corvete", "Vermelho", 80000, true, "Luxo", 1500, "DEF456");
-        CarrosLux audiA8 = new CarrosLux("Audi A8", "Preto", 120000, true, "Luxo", 2500, "GHI789");
-        CarrosLux maybach62 = new CarrosLux("Maybach 62", "Branco", 150000, true, "Luxo", 3000, "JKL012");
-        CarrosLux lexusLFA = new CarrosLux("Lexus LFA", "Azul", 200000, true, "Luxo", 4000, "MNO345");
-        CarrosLux mclarenF1 = new CarrosLux("McLaren F1", "Amarelo", 250000, true, "Luxo", 5000, "PQR678");
-        CarrosLux lexusLS600h = new CarrosLux("Lexus LS600h", "Verde", 180000, true, "Luxo", 3000, "STU901");
-
-        armazenaCar.adicionarCarros(mercedes);
-        armazenaCar.adicionarCarros(corvete);
-        armazenaCar.adicionarCarros(audiA8);
-        armazenaCar.adicionarCarros(maybach62);
-        armazenaCar.adicionarCarros(lexusLFA);
-        armazenaCar.adicionarCarros(mclarenF1);
-        armazenaCar.adicionarCarros(lexusLS600h);
 
         armazenaCar.salvarCarros();
     }

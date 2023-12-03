@@ -55,7 +55,7 @@ public class TelaLogin {
         jframe.dispose();
         SwingUtilities.invokeLater(() -> {
             TelaEntrada escolherCarroGUI = new TelaEntrada();
-            TelaEntrada.carregarCarros(escolherCarroGUI.armazenaCar);
+            //TelaEntrada.carregarCarros(escolherCarroGUI.armazenaCar);
             escolherCarroGUI.setVisible(true);
         });
     }
