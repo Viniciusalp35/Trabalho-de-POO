@@ -7,9 +7,10 @@ public class Usuarios implements Serializable {
     private String senha;
     private boolean prime;
 
-    public Usuarios(String nomeUsuario, String senha) {
+    public Usuarios(String nomeUsuario, String senha, boolean prime) {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
+        this.prime = prime;
     }
 
 

@@ -18,19 +18,34 @@ public class TelaCadastro {
         JTextField nomeUsuarioField = new JTextField();
         JLabel senhaUsuario = new JLabel("Senha:");
         JPasswordField senhaUsuarioField = new JPasswordField();
+        JCheckBox isprime = new JCheckBox();
+        isprime.setText("Assinar usuário prime?");
 
         panel.add(nomeUsuario);
         panel.add(nomeUsuarioField);
         panel.add(senhaUsuario);
         panel.add(senhaUsuarioField);
+        panel.add(isprime);
 
         int option = JOptionPane.showOptionDialog(null, panel, "Cadastro", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{"Registrar", "Cancelar"}, null);
 
+        int verificador;
+        if(isprime.isSelected()){
+            verificador = 2;
+        }else{
+            verificador = 1;
+        }
         if (option == 0) {
             String nome = nomeUsuarioField.getText();
             String senha = new String(senhaUsuarioField.getPassword());
 
-            Usuarios usuarios = new Usuarios(nome, senha);
+            Usuarios usuarios = new Usuarios(nome, senha, true);
+            if(verificador == 1) {
+                usuarios.setPrime(false);
+            } else {
+                usuarios.setPrime(true);
+            }
+
             try {
                 cadastroUsuarios.CadastrarUsuario(usuarios);
                 SalvarUsuarios.serializar(cadastroUsuarios);
