@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 
 public class TelaPagamento {
     private JFrame frame;
-    private JTextField valorTotalField;
-    private JTextField descontoField;
-    private JTextField parcelasField;
     private JButton confirmarButton;
+    private JButton cancelarButton;
     private PagamentoAbstrato pagamento;
     private Usuarios usuario;
 
@@ -23,28 +21,40 @@ public class TelaPagamento {
         frame = new JFrame("Pagamento - Locadora de Carros");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
-        frame.setLayout(new GridLayout(4, 2));
+        frame.setLayout(new GridLayout(5, 2));
 
-        //if (verificador == 1) {
-        JLabel valorTotalLabel = new JLabel("Valor Total:");
+        int verificador = 2;
+        if (verificador == 1) {
+            pagamento = new PagamentoBasico(60,12);
+        } else if (verificador == 2) {
+            pagamento = new PagamentoPrime(60,12);
+        }
+        pagamento.calcularValorTotal();
+        JLabel valorTotalLabel = new JLabel("Valor Total Com Desconto:");
         frame.add(valorTotalLabel);
-
+        JLabel valorNumerico = new JLabel("R$ " + String.valueOf(pagamento.getTotalAPagar()));
+        frame.add(valorNumerico);
 
         JLabel descontoLabel = new JLabel("Desconto (%):");
-        descontoField = new JTextField();
         frame.add(descontoLabel);
-        frame.add(descontoField);
+        JLabel descontoNumerico = new JLabel(String.valueOf(pagamento.getTaxaDesconto() * 100));
+        frame.add(descontoNumerico);
 
         JLabel parcelasLabel = new JLabel("Parcelas:");
-        parcelasField = new JTextField();
         frame.add(parcelasLabel);
-        frame.add(parcelasField);
+        JLabel parcelasNumerico = new JLabel(String.valueOf(pagamento.getParcelas()));
+        frame.add(parcelasNumerico);
+
+        JLabel valorParcelasLabel = new JLabel("Valor Por Parcelas:");
+        frame.add(valorParcelasLabel);
+        JLabel valorParcelasNumerico = new JLabel(String.valueOf(pagamento.calcularValorParcelado()));
+        frame.add(valorParcelasNumerico);
 
         confirmarButton = new JButton("Confirmar");
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calculaPagamento();
+                resultadoPagamento();
             }
         });
         frame.add(confirmarButton);
@@ -52,26 +62,12 @@ public class TelaPagamento {
         frame.setVisible(true);
     }
 
-    private void calculaPagamento() {
-        try {
-            double valorTotal = Double.parseDouble(valorTotalField.getText());
-            double desconto = Double.parseDouble(descontoField.getText());
-            int parcelas = Integer.parseInt(parcelasField.getText());
+    private void resultadoPagamento() {
+        JOptionPane.showMessageDialog(frame,
+                "Pagamento realizado com sucesso!",
+                "Resultado do Pagamento",
+                JOptionPane.INFORMATION_MESSAGE);
 
-            double valorComDesconto = valorTotal * (1 - desconto / 100);
-            double valorParcela = valorComDesconto / parcelas;
-
-            JOptionPane.showMessageDialog(frame,
-                    "Valor com desconto: R$" + String.format("%.2f", valorComDesconto) +
-                            "\nValor da parcela (" + parcelas + "x): R$" + String.format("%.2f", valorParcela),
-                    "Resultado do Pagamento",
-                    JOptionPane.INFORMATION_MESSAGE);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(frame,
-                    "Por favor, insira valores válidos.",
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        }
     }
 }
 

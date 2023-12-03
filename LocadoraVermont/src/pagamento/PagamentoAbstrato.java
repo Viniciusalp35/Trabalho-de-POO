@@ -38,4 +38,8 @@ public abstract class PagamentoAbstrato {
     public void setParcelas(int parcelas) {
         this.parcelas = parcelas;
     }
+
+    public abstract double getTaxaDesconto();
+
+    public abstract double calcularValorParcelado();
 }

@@ -30,6 +30,7 @@ public class Main {
 
 
         PagamentoAbstrato pagamento = new PagamentoPrime(60, 12);
+        double desconto = pagamento.getTaxaDesconto();
         double valor = pagamento.calcularValorTotal();
         double valorParcelado = ((PagamentoPrime) pagamento).calcularValorParcelado();
         System.out.println(valor  + " e " + valorParcelado);

@@ -21,10 +21,12 @@ public class PagamentoPrime extends PagamentoAbstrato {
         return (totalAPagar * taxaDesconto);
     }
 
+    @Override
     public double calcularValorParcelado() {
         return (totalAPagar / parcelas);
     }
 
+    @Override
     public double getTaxaDesconto() {
         return this.taxaDesconto;
     }
