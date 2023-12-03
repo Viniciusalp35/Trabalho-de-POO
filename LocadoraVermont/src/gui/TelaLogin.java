@@ -39,10 +39,12 @@ public class TelaLogin {
 
             Usuarios usuarios = new Usuarios(nome, senha);
 
+            // 1 = usuario básico
+            // 2 = usuario prime
             try {
-                boolean verificador = cadastroUsuarios.FazerLogin(usuarios);
-                if(verificador){
-                    LoginRealizado();
+                int verificador = cadastroUsuarios.FazerLogin(usuarios);
+                if(verificador == 1 || verificador == 2){
+                    LoginRealizado(verificador);
                 }
             } catch(Exception e){
                 new DialogoExcessao(e);
@@ -51,7 +53,7 @@ public class TelaLogin {
         }
     }
 
-    public void LoginRealizado(){
+    public void LoginRealizado(int verificador){
         jframe.dispose();
         SwingUtilities.invokeLater(() -> {
             TelaEntrada escolherCarroGUI = new TelaEntrada();

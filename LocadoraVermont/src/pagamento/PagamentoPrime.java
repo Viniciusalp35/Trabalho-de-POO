@@ -10,7 +10,7 @@ public class PagamentoPrime extends PagamentoAbstrato {
 
     @Override
     public double calcularValorTotal() {
-        totalAPagar = super.dias * taxaDiaria;
+        totalAPagar = dias * taxaDiaria;
         totalAPagar -= calcularDesconto();
 
         return totalAPagar;
@@ -21,7 +21,7 @@ public class PagamentoPrime extends PagamentoAbstrato {
         return (totalAPagar * taxaDesconto);
     }
 
-    public double calcularValorParcelado(double totalAPagar, int parcelas) {
+    public double calcularValorParcelado() {
         return (totalAPagar / parcelas);
     }
 
