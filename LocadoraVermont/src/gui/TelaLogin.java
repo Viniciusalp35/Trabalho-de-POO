@@ -12,7 +12,11 @@ import login.Usuarios;
 
 public class TelaLogin {
 
-    public TelaLogin(CadastroUsuarios cadastroUsuarios){
+    JFrame jframe = new JFrame();
+
+    public TelaLogin(CadastroUsuarios cadastroUsuarios, JFrame jframe){
+        this.jframe = jframe;
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
@@ -35,14 +39,27 @@ public class TelaLogin {
 
             Usuarios usuarios = new Usuarios(nome, senha);
 
+            // 1 = usuario básico
+            // 2 = usuario prime
             try {
-                cadastroUsuarios.FazerLogin(usuarios);
+                int verificador = cadastroUsuarios.FazerLogin(usuarios);
+                if(verificador == 1 || verificador == 2){
+                    LoginRealizado(verificador);
+                }
             } catch(Exception e){
                 new DialogoExcessao(e);
                 e.printStackTrace();
             }
         }
-
-
     }
+
+    public void LoginRealizado(int verificador){
+        jframe.dispose();
+        SwingUtilities.invokeLater(() -> {
+            TelaEntrada escolherCarroGUI = new TelaEntrada();
+            //TelaEntrada.carregarCarros(escolherCarroGUI.armazenaCar);
+            escolherCarroGUI.setVisible(true);
+        });
+    }
+
 }

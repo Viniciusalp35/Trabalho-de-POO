@@ -14,10 +14,9 @@ public class DialogoExcessao {
         label.setBounds(0,0,300,100);
 
         frame.add(label);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setSize(300, 400);
         frame.setLayout(null);
         frame.setVisible(true);
-
     }
 }

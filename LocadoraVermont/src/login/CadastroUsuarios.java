@@ -1,5 +1,6 @@
 package login;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import exception.DialogoExcessao;
@@ -7,7 +8,8 @@ import exception.NomeJaUtilizado;
 import exception.UsuarioNaoEncontrado;
 import exception.DialogoExcessao;
 import exception.SenhaErrada;
-public class CadastroUsuarios {
+
+public class CadastroUsuarios implements Serializable {
     private Vector<Usuarios> users;
 
     public CadastroUsuarios() {
@@ -40,21 +42,23 @@ public class CadastroUsuarios {
         }
     }
 
-    public boolean FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
+    public int FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
         Usuarios cadastrado = ProcurarUsuario(usuarios.getNomeUsuario());
         if(cadastrado != null) {
             try {
-                if (cadastrado.getSenha() != usuarios.getSenha()) {
+                if (!cadastrado.getSenha().equals(usuarios.getSenha())) {
                     throw new SenhaErrada(usuarios.getSenha());
                 } else{
-                    return true;
+                    if (usuarios.isPrime()) {
+                        return 2;
+                    }
+                    return 1;
                 }
             } catch (SenhaErrada e) {
                 new DialogoExcessao(e);
-                return false;
             }
         }
-        return false;
+        return 0;
     }
 
 }

@@ -6,20 +6,19 @@ import login.CadastroUsuarios;
 import javax.swing.*;
 import java.awt.*;
 
-public class Login extends JFrame {
+public class Login{
 
+    public JFrame jframe;
     private JButton login;
     private JButton cadastro;
 
-    public Login() throws Exception{
-        super("Locadora Vermont");
-
-        CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
+    public Login(CadastroUsuarios cadastroUsuarios) throws Exception{
+        jframe = new JFrame("Locadora Vermont");
 
         ImageIcon imagem = new ImageIcon("src/login/VermontMenor.jpg");
         JLabel backgroundLabel = new JLabel(imagem);
         backgroundLabel.setBounds(0, 0, 800, 600);
-        add(backgroundLabel);
+        jframe.add(backgroundLabel);
 
 
         //getContentPane().setBackground(Color.cyan);
@@ -28,30 +27,30 @@ public class Login extends JFrame {
         cadastro.setBounds(0, 300, 100, 30);
         cadastro.addActionListener(e -> ExibirTelaCadastro(cadastroUsuarios));
         cadastro.setFocusable(false);
-        add(cadastro);
+        jframe.add(cadastro);
 
         login = new JButton("Login");
         login.setBounds(0, 250, 100, 30);
         login.setBackground(new Color(66, 141, 245));
-        login.addActionListener(e -> ExibirTelaLogin(cadastroUsuarios));
+        login.addActionListener(e -> ExibirTelaLogin(cadastroUsuarios, jframe));
         login.setFocusable(false);
 
-        add(login);
+        jframe.add(login);
 
 
 
         JPanel panel = new JPanel();
         panel.setOpaque(false);
-        getContentPane().add(panel);
+        jframe.getContentPane().add(panel);
 
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        jframe.setSize(800, 600);
+        jframe.setLocationRelativeTo(null);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setVisible(true);
     }
 
-    private void ExibirTelaLogin(CadastroUsuarios cadastroUsuarios) {
-        TelaLogin telalogin = new TelaLogin(cadastroUsuarios);
+    private void ExibirTelaLogin(CadastroUsuarios cadastroUsuarios, JFrame jframe) {
+        TelaLogin telalogin = new TelaLogin(cadastroUsuarios, jframe);
     }
 
     private void ExibirTelaCadastro(CadastroUsuarios cadastroUsuarios) {
