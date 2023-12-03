@@ -42,20 +42,23 @@ public class CadastroUsuarios implements Serializable {
         }
     }
 
-    public boolean FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
+    public int FazerLogin(Usuarios usuarios) throws UsuarioNaoEncontrado{
         Usuarios cadastrado = ProcurarUsuario(usuarios.getNomeUsuario());
         if(cadastrado != null) {
             try {
                 if (!cadastrado.getSenha().equals(usuarios.getSenha())) {
                     throw new SenhaErrada(usuarios.getSenha());
                 } else{
-                    return true;
+                    if (usuarios.isPrime()) {
+                        return 2;
+                    }
+                    return 1;
                 }
             } catch (SenhaErrada e) {
                 new DialogoExcessao(e);
             }
         }
-        return false;
+        return 0;
     }
 
 }

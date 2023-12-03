@@ -25,7 +25,7 @@ public class TelaPagamento {
         frame.setSize(400, 200);
         frame.setLayout(new GridLayout(4, 2));
 
-
+        //if (verificador == 1) {
         JLabel valorTotalLabel = new JLabel("Valor Total:");
         frame.add(valorTotalLabel);
 
