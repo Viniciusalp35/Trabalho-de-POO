@@ -2,13 +2,25 @@ package pagamento;
 
 public class PagamentoBasico extends PagamentoAbstrato {
     private double taxaDesconto = 0.03;
-    public PagamentoBasico(double totalAPagar, int dias, int parcelas){
-        super(totalAPagar, dias, parcelas);
+    private double taxaDiaria = 80.0;
+    public PagamentoBasico(int dias, int parcelas){
+        super(dias, parcelas);
     }
 
     @Override
-    public void calculaDesconto(int dias) {
+    public double calcularValorTotal() {
+        totalAPagar = (super.dias * taxaDiaria);
+        totalAPagar -= calcularDesconto();
 
+        return totalAPagar;
+    }
+    @Override
+    public double calcularDesconto() {
+        return (totalAPagar * taxaDesconto);
+    }
+
+    public double calcularValorParcelado(double totalAPagar, int parcelas) {
+        return (totalAPagar / parcelas);
     }
 
     public double getTaxaDesconto() {
@@ -19,7 +31,11 @@ public class PagamentoBasico extends PagamentoAbstrato {
         this.taxaDesconto = taxaDesconto;
     }
 
-    public void setParcelas() {
-        this.parcelas = parcelas;
+    public double getTaxaDiaria() {
+        return this.taxaDiaria;
+    }
+
+    public void setTaxaDiaria(double taxaDiaria) {
+        this.taxaDiaria = taxaDiaria;
     }
 }
