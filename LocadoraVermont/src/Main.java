@@ -24,9 +24,6 @@ public class Main {
         Login login = new Login(cadastroUsuarios);
         SalvarUsuarios.serializar(cadastroUsuarios);
 
-
-
-
         PagamentoAbstrato pagamento = new PagamentoPrime(60, 12);
         double valor = pagamento.calcularValorTotal();
         double valorParcelado = ((PagamentoPrime) pagamento).calcularValorParcelado(pagamento.getTotalAPagar(), pagamento.getParcelas());

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public abstract class Carros implements IStatus, Serializable {
     protected String modelo;
     protected String cor;
-    protected double preço;
+    protected double preco;
     protected boolean Status;
     protected String Tipo;
     protected String Placa;
@@ -41,7 +41,7 @@ public abstract class Carros implements IStatus, Serializable {
     }
 
     public double getPreço() {
-        return preço;
+        return preco;
     }
 
     public abstract void setPreço(double preço);
