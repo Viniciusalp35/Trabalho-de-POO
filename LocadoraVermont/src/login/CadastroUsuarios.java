@@ -49,7 +49,7 @@ public class CadastroUsuarios implements Serializable {
                 if (!cadastrado.getSenha().equals(usuarios.getSenha())) {
                     throw new SenhaErrada(usuarios.getSenha());
                 } else{
-                    if (usuarios.isPrime()) {
+                    if (cadastrado.isPrime()) {
                         return 2;
                     }
                     return 1;

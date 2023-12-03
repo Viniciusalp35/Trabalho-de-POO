@@ -34,7 +34,7 @@ public class TelaEntrada extends JFrame {
         }
     }
 
-    public TelaEntrada() {
+    public TelaEntrada(int verificador) {
         armazenaCar = new ArmazenaCar();
         armazenaCar.checaEstoque("Listadoscarrosdeluxo");
         armazenaCar.checaEstoque("Listadoscarroseconomicos");
@@ -44,10 +44,10 @@ public class TelaEntrada extends JFrame {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        initComponents();
+        initComponents(verificador);
     }
 
-    public void initComponents() {
+    public void initComponents(int verificador) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(240, 240, 240)); // Cor de fundo
 
@@ -73,12 +73,12 @@ public class TelaEntrada extends JFrame {
 
         add(panel);
 
-        tipoCarroComboBox.addActionListener(e -> exibirCarros());
-        exibirCarros();
+        tipoCarroComboBox.addActionListener(e -> exibirCarros(verificador));
+        exibirCarros(verificador);
     }
 
-    public void mostrarMensagem(Carros carros) {
-        TelaReserva telaReserva = new TelaReserva(carros);
+    public void mostrarMensagem(Carros carros, int verificador) {
+        TelaReserva telaReserva = new TelaReserva(carros, verificador);
     }
 
     public static void carregarCarros (ArmazenaCar armazenaCar){
@@ -114,7 +114,7 @@ public class TelaEntrada extends JFrame {
 
         armazenaCar.salvarCarros();
     }
-    private void exibirCarros() {
+    private void exibirCarros(int verificador) {
         carrosPanel.removeAll();
 
         String tipoSelecionado = (String) tipoCarroComboBox.getSelectedItem();
@@ -138,7 +138,7 @@ public class TelaEntrada extends JFrame {
                         BorderFactory.createEmptyBorder(5, 10, 5, 10))); // Preenchimento interno
                 carroSelecionado(carro.getPlaca());
                 Carros carros2 = armazenaCar.checarCarros(getPlacaSelecionada());
-                carroButton.addActionListener(e -> mostrarMensagem(carros2));
+                carroButton.addActionListener(e -> mostrarMensagem(carros2, verificador));
                 carrosPanel.add(carroButton);
 
                 // Adiciona espaço vertical entre os botões

@@ -1,19 +1,6 @@
-import Carros.*;
-
-import gui.TelaPagamento;
-import gui.TelaEntrada;
-
-import gui.TelaReserva;
-import login.Usuarios;
 import login.CadastroUsuarios;
 import gui.Login;
 import serializador.SalvarUsuarios;
-import Carros.ArmazenaCar;
-import pagamento.PagamentoAbstrato;
-import pagamento.PagamentoBasico;
-import pagamento.PagamentoPrime;
-
-import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -29,13 +16,6 @@ public class Main {
         Login login = new Login(cadastroUsuarios);
         SalvarUsuarios.serializar(cadastroUsuarios);
 
-        PagamentoAbstrato pagamento = new PagamentoPrime(60, 12);
-        double desconto = pagamento.getTaxaDesconto();
-        double valor = pagamento.calcularValorTotal();
-        double valorParcelado = ((PagamentoPrime) pagamento).calcularValorParcelado();
-        System.out.println(valor  + " e " + valorParcelado);
-
-        TelaPagamento telaPagamento = new TelaPagamento();
     }
 
 }

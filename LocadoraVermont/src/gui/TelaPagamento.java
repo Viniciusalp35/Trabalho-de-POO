@@ -17,18 +17,21 @@ public class TelaPagamento {
     private Usuarios usuario;
 
 
-    public TelaPagamento() {
+    public TelaPagamento(int verificador, int parcelas, int dias) {
         frame = new JFrame("Pagamento - Locadora de Carros");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setSize(400, 200);
         frame.setLayout(new GridLayout(5, 2));
 
-        int verificador = 2;
+        System.out.println(verificador);
+
         if (verificador == 1) {
-            pagamento = new PagamentoBasico(60,12);
+            pagamento = new PagamentoBasico(dias,parcelas);
         } else if (verificador == 2) {
-            pagamento = new PagamentoPrime(60,12);
+            pagamento = new PagamentoPrime(dias,parcelas);
         }
+
+
         pagamento.calcularValorTotal();
         JLabel valorTotalLabel = new JLabel("Valor Total Com Desconto:");
         frame.add(valorTotalLabel);
