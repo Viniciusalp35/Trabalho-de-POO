@@ -37,11 +37,10 @@ public class Login{
 
         jframe.add(login);
 
-
-
         JPanel panel = new JPanel();
         panel.setOpaque(false);
         jframe.getContentPane().add(panel);
+
 
         jframe.setSize(800, 600);
         jframe.setLocationRelativeTo(null);

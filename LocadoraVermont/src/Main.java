@@ -3,6 +3,7 @@ import Carros.*;
 import gui.TelaPagamento;
 import gui.TelaEntrada;
 
+import gui.TelaReserva;
 import login.Usuarios;
 import login.CadastroUsuarios;
 import gui.Login;
@@ -18,16 +19,15 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello world!");
 
+        //CadastroUsuarios cadastroUsuarios = new CadastroUsuarios();
         CadastroUsuarios cadastroUsuarios = SalvarUsuarios.deserializar();
         if(cadastroUsuarios == null) {
             cadastroUsuarios = new CadastroUsuarios();
             System.out.println("nenhum usuário salvo!");
         }
+
         Login login = new Login(cadastroUsuarios);
         SalvarUsuarios.serializar(cadastroUsuarios);
-
-
-
 
         PagamentoAbstrato pagamento = new PagamentoPrime(60, 12);
         double desconto = pagamento.getTaxaDesconto();
@@ -37,6 +37,5 @@ public class Main {
 
         TelaPagamento telaPagamento = new TelaPagamento();
     }
-
 
 }

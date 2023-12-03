@@ -5,8 +5,12 @@ public class CarrosEco extends Carros {
     private double taxaEco;
 
     public CarrosEco(String modelo, String cor, double preco, boolean status, String tipo, double taxaEco, String placa) {
-        super(status, placa);
+        super(status , placa);
         this.taxaEco = taxaEco;
+        this.cor = cor;
+        this.modelo = modelo;
+        this.preco = preco;
+        this.Tipo = tipo;
     }
 
     public void setTaxaEco(double novaTaxaEco) {
@@ -18,7 +22,7 @@ public class CarrosEco extends Carros {
     }
 
     public void setPreço(double preco) {
-        this.preço = preco + taxaEco;
+        this.preco = preco + taxaEco;
     }
 
 

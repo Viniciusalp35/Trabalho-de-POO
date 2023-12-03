@@ -9,7 +9,7 @@ public class CarrosLux extends Carros {
         this.taxaLux = taxaLux;
         this.cor = cor;
         this.modelo = modelo;
-        this.preço = preco;
+        this.preco = preco;
         this.Tipo = tipo;
     }
     public void setTaxaLux(double novaTaxaLux) {
@@ -20,6 +20,6 @@ public class CarrosLux extends Carros {
     }
 
     public void setPreço(double preco) {
-        this.preço = taxaLux + preco;
+        this.preco = taxaLux + preco;
     }
 }
