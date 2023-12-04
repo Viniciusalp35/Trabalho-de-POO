@@ -59,6 +59,16 @@ public class TelaPagamento {
         });
         frame.add(confirmarButton);
 
+        cancelarButton = new JButton("Cancelar");
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        frame.add(cancelarButton);
+
+
         frame.setVisible(true);
     }
 
@@ -67,6 +77,9 @@ public class TelaPagamento {
                 "Pagamento realizado com sucesso!",
                 "Resultado do Pagamento",
                 JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void cancelarPagamento() {
 
     }
 }
