@@ -17,18 +17,21 @@ public class TelaPagamento {
     private Usuarios usuario;
 
 
-    public TelaPagamento() {
+    public TelaPagamento(int verificador, int parcelas, int dias, double preco) {
         frame = new JFrame("Pagamento - Locadora de Carros");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setSize(400, 200);
         frame.setLayout(new GridLayout(5, 2));
 
-        int verificador = 2;
+        System.out.println(verificador);
+
         if (verificador == 1) {
-            pagamento = new PagamentoBasico(60,12);
+            pagamento = new PagamentoBasico(dias,parcelas, preco);
         } else if (verificador == 2) {
-            pagamento = new PagamentoPrime(60,12);
+            pagamento = new PagamentoPrime(dias,parcelas, preco);
         }
+
+        System.out.println(dias);
         pagamento.calcularValorTotal();
         JLabel valorTotalLabel = new JLabel("Valor Total Com Desconto:");
         frame.add(valorTotalLabel);
@@ -47,7 +50,7 @@ public class TelaPagamento {
 
         JLabel valorParcelasLabel = new JLabel("Valor Por Parcelas:");
         frame.add(valorParcelasLabel);
-        JLabel valorParcelasNumerico = new JLabel(String.valueOf(pagamento.calcularValorParcelado()));
+        JLabel valorParcelasNumerico = new JLabel(String.valueOf("R$ " + pagamento.calcularValorParcelado()));
         frame.add(valorParcelasNumerico);
 
         confirmarButton = new JButton("Confirmar");
@@ -58,15 +61,6 @@ public class TelaPagamento {
             }
         });
         frame.add(confirmarButton);
-
-        cancelarButton = new JButton("Cancelar");
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        frame.add(cancelarButton);
 
 
         frame.setVisible(true);
@@ -79,8 +73,5 @@ public class TelaPagamento {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void cancelarPagamento() {
-
-    }
 }
 

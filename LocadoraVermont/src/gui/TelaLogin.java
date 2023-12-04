@@ -37,9 +37,9 @@ public class TelaLogin {
 
         if (option == 0) {
             String nome = nomeUsuarioField.getText();
-            String senha = new String(senhaUsuarioField.getPassword());
+            String senha2 = new String(senhaUsuarioField.getPassword());
 
-            Usuarios usuarios = new Usuarios(nome, senha, true);
+            Usuarios usuarios = new Usuarios(nome, senha2, true);
 
             // 1 = usuario básico
             // 2 = usuario prime
@@ -58,7 +58,7 @@ public class TelaLogin {
     public void LoginRealizado(int verificador){
         jframe.dispose();
         SwingUtilities.invokeLater(() -> {
-            TelaEntrada escolherCarroGUI = new TelaEntrada();
+            TelaEntrada escolherCarroGUI = new TelaEntrada(verificador);
             //TelaEntrada.carregarCarros(escolherCarroGUI.armazenaCar);
             escolherCarroGUI.setVisible(true);
         });

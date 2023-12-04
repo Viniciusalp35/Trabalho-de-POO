@@ -30,14 +30,17 @@ public class TelaCadastro {
         int option = JOptionPane.showOptionDialog(null, panel, "Cadastro", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{"Registrar", "Cancelar"}, null);
 
         int verificador;
-        if(isprime.isSelected()){
-            verificador = 2;
-        }else{
-            verificador = 1;
-        }
+
         if (option == 0) {
             String nome = nomeUsuarioField.getText();
             String senha = new String(senhaUsuarioField.getPassword());
+
+            if(isprime.isSelected()){
+                verificador = 2;
+            }else{
+                verificador = 1;
+            }
+            System.out.println(verificador);
 
             Usuarios usuarios = new Usuarios(nome, senha, true);
             if(verificador == 1) {

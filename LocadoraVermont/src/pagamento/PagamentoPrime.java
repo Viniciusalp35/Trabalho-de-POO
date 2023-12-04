@@ -2,10 +2,11 @@ package pagamento;
 
 public class PagamentoPrime extends PagamentoAbstrato {
     private double taxaDesconto = 0.15;
-    private double taxaDiaria = 70.0;
+    private double taxaDiaria;
 
-    public PagamentoPrime(int dias, int parcelas) {
+    public PagamentoPrime(int dias, int parcelas, double taxaDiaria) {
         super(dias, parcelas);
+        this.taxaDiaria = taxaDiaria;
     }
 
     @Override

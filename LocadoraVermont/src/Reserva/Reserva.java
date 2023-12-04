@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -100,4 +101,12 @@ public class Reserva {
     private boolean sobreposicaoDatas(Date inicio1, Date fim1, Date inicio2, Date fim2) {
         return inicio1.before(fim2) && fim1.after(inicio2);
     }
+
+    public int NumeroDias() {
+        long diferencaMillis = dataFim.getTime() - dataInicio.getTime();
+        // Converta a diferença de milissegundos para dias usando TimeUnit
+        int numeroDias = (int) TimeUnit.MILLISECONDS.toDays(diferencaMillis);
+        return numeroDias+1;
+    }
+
 }

@@ -37,6 +37,14 @@ public class ArmazenaCar implements Serializable {
                 CarrosEconomicos.add(carro);
             }
         }
+        else if(carro.getPlaca() != null && verificaRegistro(carro.getPlaca())) {
+            if(carro instanceof CarrosLux) {
+                CarrosdeLuxo.remove(checarCarros(carro.getPlaca()));
+            }
+            else if(carro instanceof CarrosEco) {
+                CarrosEconomicos.remove(checarCarros(carro.getPlaca()));
+            }
+        }
     }
 
     public void salvarCarros(){

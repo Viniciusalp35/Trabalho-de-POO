@@ -16,12 +16,14 @@ import login.Usuarios;
 public class TelaReserva extends JFrame {
 
     private Carros selectedCarro;
+    private String parcelas;
     private JTextField dataInicioTextField; // Corrigindo o nome do campo
     private JTextField dataFimTextField;
+    private JTextField ParcelasField;
     private String dataInicio;
     private String dataFim;
 
-    public TelaReserva(Carros carros) {
+    public TelaReserva(Carros carros, int verificador) {
         setTitle("Reserva GUI");
         setSize(400, 200);
         selectedCarro = carros;
@@ -45,7 +47,7 @@ public class TelaReserva extends JFrame {
 
         JLabel Parcelas = new JLabel("Parcelas:");
         panel.add(Parcelas);
-        JTextField ParcelasField = new JTextField();
+        ParcelasField = new JTextField();
         panel.add(ParcelasField);
 
         // Reservar Button
@@ -55,7 +57,7 @@ public class TelaReserva extends JFrame {
         reservarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                realizarReserva();
+                realizarReserva(verificador, carros.getPreço());
             }
         });
 
@@ -63,10 +65,13 @@ public class TelaReserva extends JFrame {
         setVisible(true);
     }
 
-    private void realizarReserva() {
+    private void realizarReserva(int verificador, double preco) {
         // Obter os dados inseridos pelo usuário
         dataInicio = dataInicioTextField.getText();  // Corrigindo o nome do campo
         dataFim = dataFimTextField.getText();
+        parcelas = ParcelasField.getText();
+
+        int parcelasN = Integer.parseInt(parcelas);
 
         // Validar os dados (adicione validações conforme necessário)
         if (dataInicio.isEmpty() || dataFim.isEmpty()) {
@@ -78,10 +83,12 @@ public class TelaReserva extends JFrame {
         Reserva novaReserva = new Reserva(selectedCarro, dataInicio, dataFim);
         boolean disponivel = novaReserva.verificarDisponibilidade();
 
+        int dias = novaReserva.NumeroDias();
+
         // Exibir mensagem com base na disponibilidade
         if (disponivel) {
             ArmazenaReserva.adicionarReserva(novaReserva); // Adicione a reserva à lista de reservas
-            JOptionPane.showMessageDialog(this, "Reserva realizada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            TelaPagamento telaPagamento = new TelaPagamento(verificador, parcelasN, dias, preco);
         } else {
             JOptionPane.showMessageDialog(this, "Carro não disponível para reserva no período especificado.", "Indisponível", JOptionPane.WARNING_MESSAGE);
         }
